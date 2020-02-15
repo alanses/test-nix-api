@@ -76,29 +76,8 @@ trait HttpResponses {
 		return $result;
 	}
 
-    public function importFinish($message = 'ok', $data = null)
+    public function noContent()
     {
-        $result = [
-            'message' => $message,
-            'failed_for_import' => null,
-        ];
-
-        if ($data instanceOf Model || $data instanceOf Collection || $data instanceOf EloquentCollection) {
-            $result['failed_for_import'] = $data->toArray();
-        }
-
-        if (is_array($data)) {
-            $result['failed_for_import'] = $data;
-        }
-
-        if ($data instanceOf \stdClass) {
-            $result['failed_for_import'] = (Array) $data;
-        }
-
-        if (is_string($data)) {
-            $result['failed_for_import'] = $data;
-        }
-
-        return $result;
+        return response()->noContent();
 	}
 }
