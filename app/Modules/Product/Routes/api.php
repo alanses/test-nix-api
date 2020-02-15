@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -11,9 +13,8 @@
 |
 */
 
-Route::post('category', 'CategoryController@store');
-Route::get('category/{id}', 'CategoryController@show');
-Route::get('categories', 'CategoryController@listCategories');
-Route::get('categories-select', 'CategoryController@listCategoriesForSelect');
-Route::delete('category/{id}', 'CategoryController@delete');
-Route::put('category/{id}', 'CategoryController@update');
+Route::post('products', 'ProductController@store');
+Route::get('product/{id}', 'ProductController@show');
+Route::get('products', 'ProductController@getListProducts');
+Route::delete('product/{id}', 'ProductController@delete');
+Route::put('product/{id}', 'ProductController@update');

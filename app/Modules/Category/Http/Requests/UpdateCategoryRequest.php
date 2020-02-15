@@ -18,7 +18,7 @@ class UpdateCategoryRequest extends AbstractRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:categories,name'
+            'name' => 'required|string|unique:categories,name|max:255'
         ];
     }
 

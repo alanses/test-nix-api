@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Modules\Category\Http\Requests;
+namespace App\Modules\Product\Http\Requests;
 
 use App\Ship\Abstraction\AbstractRequest;
 
-class CreateCategoryRequest extends AbstractRequest
+class ProductRequest extends AbstractRequest
 {
-    protected $urlParameters = [];
+    protected $urlParameters = [
+        'id'
+    ];
 
     /**
      * Get the validation rules that apply to the request.
@@ -16,7 +18,7 @@ class CreateCategoryRequest extends AbstractRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|unique:categories,name|max:255'
+            'id' => 'required|exists:products,id'
         ];
     }
 
