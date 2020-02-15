@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Modules\{{moduleName}}\Tasks;
+
+use App\Ship\Abstraction\AbstractTask;
+
+class {{taskName}}Task extends AbstractTask
+{
+    public function run()
+    {
+
+    }
+}

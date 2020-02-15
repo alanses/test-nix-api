@@ -1,0 +1,13 @@
+<?php
+
+namespace App\Modules\{{moduleName}}\Actions;
+
+use App\Ship\Abstraction\AbstractAction;
+
+class {{actionName}}Action extends AbstractAction
+{
+    public function run()
+    {
+
+    }
+}
