@@ -34,7 +34,7 @@ class GetListOrdersTask extends AbstractTask
     public function whereCategoryIS(?int $categoryID)
     {
         if($categoryID) {
-            $this->repository->pushCriteria(new HavingCriteria('category_id', '=', $categoryID));
+            $this->repository->pushCriteria(new HavingCriteria('orders.category_id', '=', $categoryID));
         }
     }
 

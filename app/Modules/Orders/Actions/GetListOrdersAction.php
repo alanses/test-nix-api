@@ -11,9 +11,9 @@ class GetListOrdersAction extends AbstractAction
     public function run(StatisticOrdersRequest $request)
     {
         $products = $this->call(GetListOrdersTask::class, [], [
-            ['groupBy' => []],
             ['whereDateBetween' => [$request->from, $request->to]],
-            ['whereCategoryIS' => [$request->category_id]]
+            ['whereCategoryIS' => [$request->category_id]],
+            ['groupBy' => []],
         ]);
 
         return $products;

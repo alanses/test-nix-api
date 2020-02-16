@@ -9,7 +9,9 @@ class GetListProductsAction extends AbstractAction
 {
     public function run()
     {
-        $products = $this->call(GetListProductsTask::class);
+        $products = $this->call(GetListProductsTask::class, [], [
+            ['withPaginate' => []]
+        ]);
 
         return $products->load(['category']);
     }

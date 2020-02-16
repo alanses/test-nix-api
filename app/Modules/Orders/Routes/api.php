@@ -13,5 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('order', 'OrdersController@makeOrder');
-Route::get('statistic-orders', 'StatisticOrdersController@getListOrders');
+Route::middleware('auth:api')->group(function () {
+    Route::post('order', 'OrdersController@makeOrder');
+    Route::get('statistic-orders', 'StatisticOrdersController@getListOrders');
+});
