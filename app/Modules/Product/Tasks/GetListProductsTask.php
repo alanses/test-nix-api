@@ -42,6 +42,11 @@ class GetListProductsTask extends AbstractTask
         return $this;
     }
 
+    public function withCategories()
+    {
+        $this->repository->with(['category']);
+    }
+
     /**
      * @param int $categoryId
      * @throws \Prettus\Repository\Exceptions\RepositoryException

@@ -16,6 +16,6 @@ class GetListOrdersAction extends AbstractAction
             ['groupBy' => []],
         ]);
 
-        return $products;
+        return $products->load(['product', 'user', 'category']);
     }
 }

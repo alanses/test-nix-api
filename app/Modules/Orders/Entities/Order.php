@@ -28,6 +28,14 @@ class Order extends AbstractEntity
     /**
      * @return BelongsTo
      */
+    public function category() :BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category_id', 'id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
     public function user() :BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
