@@ -12,3 +12,7 @@
 */
 
 Route::post('login', 'AuthenticationController@login');
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('logout', 'AuthenticationController@logout');
+});

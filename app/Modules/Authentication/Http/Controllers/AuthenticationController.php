@@ -8,6 +8,7 @@ use App\Modules\User\Actions\FindUserByEmailAction;
 use App\Modules\User\Entities\User;
 use App\Modules\User\Transformers\UserTransformer;
 use App\Ship\Parents\ApiController;
+use Illuminate\Support\Facades\Auth;
 
 class AuthenticationController extends ApiController
 {
@@ -29,5 +30,14 @@ class AuthenticationController extends ApiController
         $user['response_content'] = $result['response-content'];
 
         return new UserTransformer($user);
+    }
+
+    public function logout()
+    {
+        $user = Auth::user();
+
+        return response()->json(['data' => [
+            'logout' => $user->token()->revoke()
+        ]]);
     }
 }
