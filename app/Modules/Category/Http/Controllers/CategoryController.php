@@ -17,8 +17,27 @@ use App\Ship\Parents\ApiController;
 class CategoryController extends ApiController
 {
     /**
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @OA\Get(
+     *     path="/categories",
+     *     description="List Categories",
+     *     operationId="listCategories",
+     *     tags={"Categories"},
+     *     security={
+     *         {"bearerAuth": {}}
+     *     },
+     *     summary="Get list of Categories",
+     *     @OA\Response(
+     *         response="200",
+     *         description="Everything is fine",
+     *         @OA\JsonContent(ref="#/components/schemas/CategoryTransformer")
+     *     ),
+     *      @OA\Response(
+     *         response="404",
+     *         description="Example not found"
+     *     )
+     * )
      */
+
     public function listCategories()
     {
         $categories = $this->call(GetCategoriesAction::class);

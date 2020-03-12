@@ -1,0 +1,174 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Store Swagger API documentation",
+        "contact": {
+            "email": "alansisslavik@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://api-nix-test/api",
+            "description": "Laravel Swagger API server"
+        }
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Login to application",
+                "description": "Login to application",
+                "operationId": "login",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/LoginRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "422": {
+                        "description": "Validation error"
+                    }
+                }
+            }
+        },
+        "/categories": {
+            "get": {
+                "tags": [
+                    "Categories"
+                ],
+                "summary": "Get list of Categories",
+                "description": "List Categories",
+                "operationId": "listCategories",
+                "responses": {
+                    "200": {
+                        "description": "Everything is fine",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/CategoryTransformer"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Example not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "LoginRequest": {
+                "title": "Login",
+                "description": "Login  to application request",
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "title": "email",
+                        "description": "Email of the register user",
+                        "type": "string",
+                        "example": "admin@gmail.com"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "Password of the register user",
+                        "type": "string",
+                        "example": "admin@gmail.com"
+                    }
+                },
+                "type": "object"
+            },
+            "UserTransformer": {
+                "title": "UserTransformer",
+                "description": "User Transformer",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserTransformer"
+                }
+            },
+            "Category": {
+                "title": "Category",
+                "description": "Category model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "name": {
+                        "title": "Category",
+                        "description": "Category name",
+                        "type": "string",
+                        "example": "Projects"
+                    },
+                    "updated_at": {
+                        "title": "Updated at",
+                        "description": "Updated at",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2020-01-27 17:50:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Category"
+                }
+            },
+            "CategoryTransformer": {
+                "title": "CategoryTransformer",
+                "description": "Category Transformer",
+                "properties": {
+                    "data": {
+                        "title": "Data",
+                        "description": "Data wrapper",
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/Category"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "CategoryTransformer"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "Authorization",
+                "in": "header",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Auth;
 class AuthenticationController extends ApiController
 {
     /**
+     * @OA\Post(
+     *      path="/login",
+     *      operationId="login",
+     *      tags={"Authentication"},
+     *      summary="Login to application",
+     *      description="Login to application",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(ref="#/components/schemas/LoginRequest")
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation"
+     *       ),
+     *      @OA\Response(
+     *          response=422,
+     *          description="Validation error"
+     *      )
+     * )
+     *
+     *
      * @param  LoginRequest  $request
      * @return UserTransformer
      * @throws \ReflectionException
