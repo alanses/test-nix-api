@@ -34,7 +34,14 @@
                 },
                 "responses": {
                     "200": {
-                        "description": "Successful operation"
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserTransformer"
+                                }
+                            }
+                        }
                     },
                     "422": {
                         "description": "Validation error"
@@ -75,6 +82,72 @@
     },
     "components": {
         "schemas": {
+            "Authentication": {
+                "title": "Authentication",
+                "description": "Authentication data",
+                "properties": {
+                    "token_type": {
+                        "title": "token_type",
+                        "description": "Token type",
+                        "type": "string",
+                        "example": "Bearer"
+                    },
+                    "expires_in": {
+                        "title": "expires_in",
+                        "description": "Token expire in",
+                        "type": "string",
+                        "example": "31536000"
+                    },
+                    "access_token": {
+                        "title": "access_token",
+                        "description": "Access Token",
+                        "type": "string"
+                    },
+                    "refresh_token": {
+                        "title": "refresh_token",
+                        "description": "Refresh Token",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "user_id": {
+                        "title": "user_Id",
+                        "description": "User Id",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "User Email",
+                        "type": "string",
+                        "example": "admin@admin.com"
+                    },
+                    "name": {
+                        "title": "Name",
+                        "description": "User name",
+                        "type": "string",
+                        "example": "slavik"
+                    },
+                    "content": {
+                        "title": "Content",
+                        "description": "Login data",
+                        "$ref": "#/components/schemas/Authentication"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
             "LoginRequest": {
                 "title": "Login",
                 "description": "Login  to application request",
@@ -104,7 +177,8 @@
                 "properties": {
                     "data": {
                         "title": "Data",
-                        "description": "Data wrapper"
+                        "description": "Data wrapper",
+                        "$ref": "#/components/schemas/User"
                     }
                 },
                 "type": "object",

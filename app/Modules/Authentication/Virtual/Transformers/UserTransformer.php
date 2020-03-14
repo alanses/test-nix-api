@@ -26,7 +26,7 @@ class UserTransformer
      *     description="Data wrapper"
      * )
      *
-     * @var \App\Modules\Category\Virtual\Entities\User
+     * @var \App\Modules\Authentication\Virtual\Entities\User
      */
 
      private $data;

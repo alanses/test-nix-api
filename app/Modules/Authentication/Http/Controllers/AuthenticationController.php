@@ -25,7 +25,8 @@ class AuthenticationController extends ApiController
      *      ),
      *      @OA\Response(
      *          response=200,
-     *          description="Successful operation"
+     *          description="Successful operation",
+     *          @OA\JsonContent(ref="#/components/schemas/UserTransformer")
      *       ),
      *      @OA\Response(
      *          response=422,
