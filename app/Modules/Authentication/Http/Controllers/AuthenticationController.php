@@ -35,7 +35,7 @@ class AuthenticationController extends ApiController
      * )
      *
      *
-     * @param  LoginRequest  $request
+     * @param  LoginRequest $request
      * @return UserTransformer
      * @throws \ReflectionException
      */
@@ -53,6 +53,26 @@ class AuthenticationController extends ApiController
 
         return new UserTransformer($user);
     }
+
+    /**
+     * @OA\Post(
+     *      path="/logout",
+     *      operationId="logout",
+     *      tags={"Authentication"},
+     *      summary="Logout from application",
+     *      @OA\RequestBody(
+     *          @OA\JsonContent(ref="#")
+     *      ),
+     *      security={
+     *         {"bearerAuth": {}}
+     *      },
+     *      @OA\Response(
+     *          response=200,
+     *          description="Logout",
+     *          @OA\JsonContent(ref="#")
+     *       )
+     * )
+     */
 
     public function logout()
     {
