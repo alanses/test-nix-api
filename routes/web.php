@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test-payment', 'ShowProfile@testPayment');
+
+Route::get('confirm-test-payment', 'ShowProfile@confirm');
+Route::post('confirm-test-payment', 'ShowProfile@confirm');
+Route::put('confirm-test-payment', 'ShowProfile@confirm');
