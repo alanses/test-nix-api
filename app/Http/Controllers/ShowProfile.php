@@ -15,7 +15,7 @@ class ShowProfile extends Controller
             env('LIQ_PAY_PRIVATE_KEY', 'sandbox_JLIW2EiLyZiVCVdKao14s5keozi7HVjkMJGRRUpY')
         );
 
-        $signature = $liqPay->cnb_form([
+        $signature = $liqPay->cnb_form_raw([
             'action'         => 'pay',
             'amount'         => 150,
             'currency'       => 'UAH',
@@ -24,7 +24,7 @@ class ShowProfile extends Controller
             'version'        => '3',
             'language'       => 'en',
             'server_url'     => env('SERVER_URL'),
-            'result_url'     => env('TEST')
+            'result_url'     => env('SERVER_URL')
         ]);
 
         return view('test', ['signature' => $signature]);
