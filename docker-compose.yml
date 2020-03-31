@@ -6,21 +6,21 @@ services:
 
     mysql:
       image: mysql:5.7
-      container_name: api-nix-test-mysql
+      container_name: test-mysql
       working_dir: /application
       volumes:
         - .:/application
       environment:
-        - MYSQL_ROOT_PASSWORD=api-nix-test
-        - MYSQL_DATABASE=api-nix-test
-        - MYSQL_USER=api-nix-test
-        - MYSQL_PASSWORD=api-nix-test
+        - MYSQL_ROOT_PASSWORD=test
+        - MYSQL_DATABASE=test
+        - MYSQL_USER=test
+        - MYSQL_PASSWORD=test
       ports:
         - "8084:3306"
 
     webserver:
       image: nginx:alpine
-      container_name: api-nix-test
+      container_name: test-webserver
       working_dir: /application
       volumes:
           - .:/application
@@ -30,7 +30,7 @@ services:
 
     php-fpm:
       build: phpdocker/php-fpm
-      container_name: api-nix-test-php-fpm
+      container_name: test-php-fpm
       working_dir: /application
       volumes:
         - .:/application
@@ -38,11 +38,12 @@ services:
 
     phpmyadmin:
       image: phpmyadmin/phpmyadmin
+      container_name: test-phpmyadmin
       links:
         - mysql:mysql
       ports:
         - 9999:80
       environment:
-        MYSQL_USERNAME: api-nix-test-php-fpm
-        MYSQL_ROOT_PASSWORD: api-nix-test-php-fpm
+        MYSQL_USERNAME: test
+        MYSQL_ROOT_PASSWORD: test
         PMA_HOST: mysql
