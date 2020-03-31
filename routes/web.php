@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Route::get('/test-payment', 'ShowProfile@testPayment');
 
+Route::get('test', function () {
+    dd(123);
+});
+
 Route::get('confirm-test-payment', 'ShowProfile@confirm');
 Route::post('confirm-test-payment', 'ShowProfile@confirm');
 Route::put('confirm-test-payment', 'ShowProfile@confirm');
